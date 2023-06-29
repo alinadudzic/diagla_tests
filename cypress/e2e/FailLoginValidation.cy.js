@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Login walidation', () => { 
+describe('Login validation', () => { 
     it('wrong e-mail adress', function() { 
       cy.visit('/');
       cy.login("wrongmail@gmail.com", "Testowe123456");
