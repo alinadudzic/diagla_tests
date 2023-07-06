@@ -5,7 +5,6 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
     },
     baseUrl: 'https://diagla.vot.pl/',
-    IncludeShadowDom: true,
     chromeWebSecurity: true,
     viewportHeight: 1080,
     viewportWidth: 1920,
