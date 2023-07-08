@@ -30,10 +30,3 @@ Cypress.Commands.add("generateUniqueEmail", () => {
     cy.get('#-password').clear();
     cy.get('#email-login').clear();
   })
-
-  Cypress.Commands.add("sensorView", () => {
-      cy.successLogin()
-      cy.get('h6.MuiTypography-root.MuiTypography-h6.css-nm9qzb').should('be.visible').contains('Devices').click();
-      cy.get('a[href="/device/509fed1c-1ec3-480f-9675-ba0fbd261b00"]').click();
-      cy.get('a[href="/sensor/13983e07-5379-4e85-8a27-93fcf26a5ebf"]').click();
-      })
