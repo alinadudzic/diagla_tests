@@ -1,6 +1,3 @@
-/// <reference types="cypress" />
-
-
 describe('Succes login', () => { 
   it('verify all elements on login page', () => {
     cy.visit('/');
@@ -14,12 +11,14 @@ describe('Succes login', () => {
     cy.get('input[type="checkbox"]').should('not.be.checked');
     cy.get('.MuiTypography-root.MuiTypography-h6.MuiLink-root.MuiLink-underlineHover.css-1o8h6zj').should('contain', "Forgot Password?").and('have.attr', 'href', '/login');
     cy.get('button[type="submit"]').should((submitButton) => {
-    expect(submitButton).to.have.css('background-color', 'rgb(24, 144, 255)'); 
-    expect(submitButton).to.have.css('color', 'rgb(255, 255, 255)');
+    expect(submitButton).have.css('background-color', 'rgb(24, 144, 255)'); 
+    expect(submitButton).have.css('color', 'rgb(255, 255, 255)');
   })})
   
   it('succes login on diagla', function() {  
-    cy.login("alina.dudzic@gmail.com", "Testowe123456");
+    const password = Cypress.env("password");
+    const email = Cypress.env("email");
+    cy.login(email, password);
       cy.wait(400)
       cy.url().should('eq', 'https://diagla.vot.pl/')
 

@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 describe('Website accessibility and https protocol', () => { 
     it('wisiting on diagla website', () => { 
       cy.visit('/');
