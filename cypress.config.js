@@ -9,7 +9,7 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     testIsolation: false,
     chromeWebSecurity: true,
-    firefoxGcInterval: -1,
+    //firefoxGcInterval: -1,
   },
 })
 

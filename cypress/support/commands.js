@@ -4,13 +4,6 @@ Cypress.Commands.add("login", (email, password) => {
     cy.get('[type="submit"]').click();
 })
 
-Cypress.Commands.add("generateUniqueEmail", () => {
-    const timestamp = Date.now();
-    const registrationEmail = `duser${timestamp}@example.com`;
-  
-    return registrationEmail;
-  });
-
   Cypress.Commands.add("successLogin", () => {
     const email = Cypress.env("email");
     const password = Cypress.env("password");
@@ -23,8 +16,8 @@ Cypress.Commands.add("generateUniqueEmail", () => {
 
   Cypress.Commands.add("logout", () => {
     const email = Cypress.env("email");
-    cy.contains('h6', email).click({ force: true })
-    cy.contains('span', 'Logout').click({ force: true });
+    cy.contains('h6', email).click()
+    cy.contains('span', 'Logout').click();
   })
 
   Cypress.Commands.add("clearLoginData", () => {
@@ -39,7 +32,7 @@ Cypress.Commands.add("generateUniqueEmail", () => {
               cy.url().should('eq', 'https://diagla.vot.pl/login')
   })
 
-  Cypress.Commands.add("failLogin", () => {
+  Cypress.Commands.add("failLoginApiResponse", () => {
   cy.clearLoginData();
   cy.intercept('POST', '/api/login_check', (loginRequest) => {
   loginRequest.continue((loginResponse) => {

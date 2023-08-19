@@ -9,17 +9,14 @@ describe('Succes login', () => {
     cy.get('.MuiTypography-root.MuiTypography-body1.css-lv3i5e').should('contain', "Don't have an account?").and('have.attr', 'href', '/register');
     cy.get('.MuiTypography-root.MuiTypography-h6.css-14bbaup').should('contain', 'Keep me sign in');
     cy.get('input[type="checkbox"]').should('not.be.checked');
-    cy.get('.MuiTypography-root.MuiTypography-h6.MuiLink-root.MuiLink-underlineHover.css-1o8h6zj').should('contain', "Forgot Password?").and('have.attr', 'href', '/login');
-    cy.get('button[type="submit"]').should((submitButton) => {
-    expect(submitButton).have.css('background-color', 'rgb(24, 144, 255)'); 
-    expect(submitButton).have.css('color', 'rgb(255, 255, 255)');
-  })})
+    cy.get('a[href="/login"]').should('have.text', 'Forgot Password?');
+    cy.get('button[type="submit"]').should('have.css', 'background-color', 'rgb(24, 144, 255)').should('have.css', 'color', 'rgb(255, 255, 255)');
+  })
   
   it('succes login on diagla', function() {  
     const password = Cypress.env("password");
     const email = Cypress.env("email");
     cy.login(email, password);
-      cy.wait(400)
       cy.url().should('eq', 'https://diagla.vot.pl/')
 
       cy.logout();
