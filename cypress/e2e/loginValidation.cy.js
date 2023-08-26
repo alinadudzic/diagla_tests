@@ -2,35 +2,35 @@ describe('Login validation', () => {
     it('wrong e-mail adress', function() { 
       cy.visit('/');
       const password = Cypress.env("password");
-      cy.failLogin();
+      cy.failLoginApiResponse();
       cy.login("wrongmail@gmail.com", password);
       cy.failLoginValidation();
 
     })
     it('wrong password', function() { 
       const email = Cypress.env("email");
-      cy.failLogin();
+      cy.failLoginApiResponse();
       cy.login(email, "Wrongpassword")
       cy.failLoginValidation();
       }) 
 
       it('wrong e-mail', function() { 
       const password = Cypress.env("password");
-        cy.failLogin();
+        cy.failLoginApiResponse();
         cy.login("wrongemail@gmail.com", password)
         cy.failLoginValidation();
         }) 
 
         it('correct password but in lower case', function() { 
           const email = Cypress.env("email");
-          cy.failLogin();
+          cy.failLoginApiResponse();
           cy.login(email, "testowe123456")
           cy.failLoginValidation();
           }) 
 
           it('correct password but with a space at the end', function() { 
             const email = Cypress.env("email");
-            cy.failLogin();
+            cy.failLoginApiResponse();
             cy.login(email, "Testowe123456 ")
             cy.failLoginValidation();
             }) 
@@ -38,14 +38,14 @@ describe('Login validation', () => {
            // commented because there is an bug in the system
            // it('correct e-mail but with a space at the end', function() { 
            // const password = Cypress.env("password");
-           //  cy.failLogin();
+           //  cy.failLoginApiResponse();
            //  cy.login('alina.dudzic@gmail.com ', password)
            //  cy.failLoginValidation();
            //  }) 
 
            it('sql iniection', function() { 
             const email = Cypress.env("email");
-            cy.failLogin();
+            cy.failLoginApiResponse();
             cy.login(email, "' or '1'='1")
             cy.failLoginValidation();
             }) 
